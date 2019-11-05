@@ -1,5 +1,3 @@
-/*Desenvolva um algoritmo onde o usuario informe 10 valores inteiros e ao termino o programa */
-
 #include<stdio.h>
 #include<stdlib.h>
 
