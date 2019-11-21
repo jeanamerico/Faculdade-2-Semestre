@@ -17,7 +17,6 @@ void esvaziarPoltronas(){
 void exibirMapa(int tmpInicio, int tmpFim){
 	char status[10];
 	for (i=tmpInicio; i<=tmpFim; i++){
-		
 		if(i==0)
 			printf("## Setor VIP ##\n\n");
 		else if(i==50){
@@ -36,19 +35,18 @@ void exibirMapa(int tmpInicio, int tmpFim){
 			printf("\n");
 		}
 	}
-	getch();
-	system("cls");
+	system("pause");
 }
 
 int montarMenu(){
 	int opcao;
 	printf("** Programa eventos***\n\n");
-	printf("Entre com a opção desejada:\n\n");
+	printf("Entre com a opÃ§Ã£o desejada:\n\n");
 	printf("1 - Efetuar venda de ingressos\n");
 	printf("2 - Visualizar mapa do evento\n");
 	printf("3 - Relatorio de Caixa\n");
 	printf("4 - Sair\n");
-	printf("Opção: ");
+	printf("OpÃ§Ã£o: ");
 	scanf("%d", &opcao);
 	system("cls");
 	return opcao;
@@ -70,10 +68,8 @@ int efetuarVenda(int tmPoltrona){
 			preco = 100;
 		}
 		printf("Valor a pagar: R$ %.2f\n", preco);
-		
 		caixa += preco;//caixa=caixa + preco
 		poltronas[tmPoltrona-1]= 1;//poltrona ocupada
-		
 		ocupadas++;
 		disponiveis--;
 		
@@ -100,12 +96,14 @@ void menuVenda(){
 				}else if(setor == 2){
 					inicio = 50;
 					fim = 149;
-				}else{
+				}else if(setor == 3){
 					inicio = 150;
 					fim = 249;
+				}else{
+					menuVenda();
 				}
 				exibirMapa(inicio,fim);
-				printf("Informe o número da poltrona:");
+				printf("Informe o nÃºmero da poltrona:");
 				scanf("%d", &nPolt);
 				
 				statusVenda = efetuarVenda(nPolt);
@@ -136,9 +134,8 @@ void relatorio(){
 			}
 		}
 	}
-	
 	system("cls");
-	printf("## Relatório de vendas ##\n\n");
+	printf("## RelatÃ³rio de vendas ##\n\n");
 	printf("Setor vip: %d\n", vips);
 	printf("Setor Comum: %d\n", comuns);
 	printf("Setor Superior: %d\n", sups);
@@ -165,8 +162,6 @@ int main(){
 				exibirMapa(0,49);
 				exibirMapa(50,149);
 				exibirMapa(150,249);
-				
-				
 				break;
 				
 			case 3://relatorio
@@ -177,15 +172,10 @@ int main(){
 				break;
 				
 			default:
-				printf("Opção invalida! \n\n");
+				printf("OpÃ§Ã£o invalida! \n\n");
 				_sleep(3500);
 				system("cls");
 				break;
 		}
-		
-		
 	}while(menu != 4);
-	
-	
-	
 }
